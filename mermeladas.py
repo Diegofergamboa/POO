@@ -1,17 +1,17 @@
 #Proceso de produccion de mermeladas
 
-class mermelada():
+class Mermelada:
     
-    def __init__(self, lavar, cortar, cocinar, endulzar, maria, enfriar, empacar, temperatura):
-        self.lavar = lavar  
-        self.cortar = cortar
-        self.cocinar = cocinar 
-        self.endulzar = endulzar 
-        self.maria = maria
-        self.enfriar = enfriar 
-        self.empacar = empacar
-        self._sellado = 'En caliente'
-        self.temperatura = temperatura
+    def __init__(sel):
+        self._lavar()  
+        self._cortar()
+        self._cocinar() 
+        self._endulzar() 
+        self._maria()
+        self._enfriar() 
+        self._empacar()
+        self._sellado()
+        self._temperatura()
         
         
     def sellado (self, maria, enfriar, apretar = 'Fuerte', temperatura):
