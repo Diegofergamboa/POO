@@ -1,36 +1,38 @@
 '''
-    Modulo de busqueda y ordenacion
-    para desarrollar la aplicacion de complejidad algoritmica
-    y, ver que algoritmos tenemos a nuestra disposicion
-    Es decir intentar buscar algoritmos mas eficientes
+    Toma la estrategia de dividir haciendo el programa mas pequeño hasta que llegamos a la solucion
+    se llama binaria porque se divide en dos en cada iteracion, este algoritmo asume que la lista esta
+    ordenada.
+    * Si se va a usar muchas veces el algoritmo vale la pena intentar ordenarlo, si no no es necesario
+      ya que se amortiza el costo que vamos a realizar cada vez.
+    * Si la lista no esta ordenada busque lineal, si no es mejor realizarlo de manera binaria
+    SIEMPRE SE EMPIEZA A CONTAR DESDE CERO
 '''
-###### Busqueda lineal ########
 
-# Ver cada uno de los elemtnso y ver si lo podemos ver en una lista, es decir si existe o no
-# EL PEOR CASO = Que despues de 1 millon de iteraciones no lo podamos crear
-# Big(O) de este logaritmo
+def busqueda_binaria(lista, comienzo, final, objetivo):
+    
+    if comienzo > final:
+        print('El valor no està en la lista')
+        
+    medio = (comienzo + final)/2
+    
+    if lista[medio] < objetivo:
+        return True
+    elif lista[medio] < objetivo:
+        return busqueda_binaria(lista, medio + 1, final, objetivo)
+    else:
+        return busqueda_binaria(lista, comienzo, medio -1, objetivo)
 
-# Se importa libreria para generar valores random los cuales se van a usar en listas
-
-import random
-
-# Se comienza a construir el algoritmo
-# La variable match es basicamente la que dice si el objetivo y el elemento coinciden
-
-def busqueda_lineal(objeto, lista):
-    match = False
-    for elemento in lista:
-        if elemento == objetivo:
-            match = True
-        break
-    return match
+import random 
+#Se recomienda escribir esto primero
 
 if __name__ == '__main__':
     tamano_de_lista = int(input('De que tamano sera la lista? '))
     objetivo = int(input('Que numero quieres encontrar? '))
 
-    lista = [random.randint(0, 100) for i in range(tamano_de_lista)]
+#Funcion sorted ordena la lista
 
-    encontrado = busqueda_lineal(lista, objetivo)
+    lista = sorted([random.randint[0, 100] for i in range(tamano_de_lista)])
+
+    encontrado = busqueda_binaria(lista, 0, len(lista), objetivo)
     print(lista)
     print(f'El elemento {objetivo} {"esta" if encontrado else "no esta"} en la lista')
